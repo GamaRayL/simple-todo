@@ -1,0 +1,12 @@
+.textField {
+    font-size: 22px;
+    font-weight: 200;
+    line-height: 2.5;
+    width: 475px;
+    border: none;
+    outline: none;
+}
+::placeholder {
+    color: #d1d1d1;
+    font-style: italic;
+}

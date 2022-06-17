@@ -1,0 +1,19 @@
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 22px;
+    font-weight: 300;
+    word-break: break-all;
+    line-height: 2.5;
+}
+
+.deleteTodo {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.deleteTodo:hover {
+    transform: rotate(0.5turn);
+    transition: ease-in-out 0.5s;
+}
