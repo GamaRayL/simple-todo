@@ -1,45 +1,49 @@
-import {
-  CheckCircleOutline,
-  RadioButtonUnchecked,
-  Remove,
-} from "@mui/icons-material";
-import { Checkbox } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { Remove } from "@mui/icons-material";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { removeTodo, toggleTodoComplete } from "store/todoSlice";
 import css from "./styles.module.css";
 
-const useStyles = makeStyles({
-  checkbox: {
-    "&.Mui-checked + $todoText": {
-      textDecoration: "line-through",
-      color: "#d1d1d1",
-    },
-  },
-  todoText: {},
-});
-
 export const TodoItem = ({ id, text, completed }) => {
+  const [isShow, setIsShow] = useState(false);
   const dispatch = useDispatch();
-  const classes = useStyles();
 
   return (
-    <li key={id} className={css.item}>
-      <label style={{ display: "flex" }}>
-        <Checkbox
-          className={classes.checkbox}
+    <li
+      key={id}
+      className={css.item}
+      onMouseEnter={() => setIsShow(true)}
+      onMouseLeave={() => setIsShow(false)}
+    >
+      <label className={css.boxTextIcon}>
+        <input
+          className={css.checkbox}
           checked={completed}
+          type="checkbox"
           onChange={() => dispatch(toggleTodoComplete({ id }))}
-          icon={<RadioButtonUnchecked />}
-          checkedIcon={<CheckCircleOutline color="success" />}
         />
-        <span className={classes.todoText}>{text}</span>
+        {completed ? (
+          <img
+            className={css.checkedIcon}
+            src="images/checked.svg"
+            alt="checked"
+          />
+        ) : (
+          <img
+            className={css.uncheckedIcon}
+            src="images/unchecked.svg"
+            alt="unchecked"
+          />
+        )}
+        <span className={css.todoText}>{text}</span>
       </label>
-      <Remove
-        className={css.deleteTodo}
-        color="disabled"
-        onClick={() => dispatch(removeTodo({ id }))}
-      />
+      {isShow ? (
+        <Remove
+          className={css.deleteTodo}
+          color="disabled"
+          onClick={() => dispatch(removeTodo({ id }))}
+        />
+      ) : null}
     </li>
   );
 };

@@ -1,13 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
-export const fetchTodos = createAsyncThunk(
-  "todos/fetchTodos",
-  async function () {
-    const response = await fetch("https://jsonplaceholder.typicode.com/todos");
-    const data = await response.json();
-    return data;
-  }
-);
+import { createSlice } from "@reduxjs/toolkit";
 
 const todoSlice = createSlice({
   name: "todos",
@@ -28,6 +19,10 @@ const todoSlice = createSlice({
       state.todos = state.todos.filter((todo) => todo.id !== action.payload.id);
     },
 
+    removeAllTodos(state) {
+      state.todos = [];
+    },
+
     toggleTodoComplete(state, action) {
       const toggledTodo = state.todos.find(
         (todo) => todo.id === action.payload.id
@@ -37,5 +32,10 @@ const todoSlice = createSlice({
   },
 });
 
-export const { addTodo, removeTodo, toggleTodoComplete } = todoSlice.actions;
+export const {
+  addTodo,
+  removeTodo,
+  toggleTodoComplete,
+  removeAllTodos,
+} = todoSlice.actions;
 export default todoSlice.reducer;

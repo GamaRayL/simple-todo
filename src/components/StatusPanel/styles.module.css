@@ -1,0 +1,40 @@
+.panel, .statusContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel {
+    padding: 10px 10px;
+    font-weight: 300;
+    color: #5f5f5f;
+    font-size: 14px;
+}
+
+.filters {
+    display: flex;
+    list-style: none;
+    cursor: pointer;
+}
+
+.filterItem, .clearCompletedTodo {
+    cursor: pointer;
+    padding: 2px 6px;
+    border: 2px solid transparent;
+    border-radius: 3px;
+}
+
+.filterItem:hover, .clearCompletedTodo:hover {
+    border-color: rgba(175, 47, 47, 0.1);
+}
+
+.radio:checked + label {
+    border-color: rgba(247, 3, 3, 0.1);
+}
+
+.radio {
+    display: none;
+}
+
+
+
