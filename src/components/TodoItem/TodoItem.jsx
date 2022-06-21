@@ -5,8 +5,28 @@ import { removeTodo, toggleTodoComplete } from "store/todoSlice";
 import css from "./styles.module.css";
 
 export const TodoItem = ({ id, text, completed }) => {
+  const [isEdit, setIsEdit] = useState(true);
   const [isShow, setIsShow] = useState(false);
+
   const dispatch = useDispatch();
+
+
+  const defaultView = () => {
+    return (
+      <span className={css.todoText} onDoubleClick>
+        {text}
+      </span>
+    );
+  };
+
+  const editView = () => {
+    return (
+      <input
+        value
+        onChange
+      ></input>
+    );
+  };
 
   return (
     <li
@@ -15,28 +35,31 @@ export const TodoItem = ({ id, text, completed }) => {
       onMouseEnter={() => setIsShow(true)}
       onMouseLeave={() => setIsShow(false)}
     >
-      <label className={css.boxTextIcon}>
-        <input
-          className={css.checkbox}
-          checked={completed}
-          type="checkbox"
-          onChange={() => dispatch(toggleTodoComplete({ id }))}
-        />
-        {completed ? (
-          <img
-            className={css.checkedIcon}
-            src="images/checked.svg"
-            alt="checked"
+      <div className={css.boxTextIcon}>
+        <label className={css.boxIcon}>
+          <input
+            className={css.checkbox}
+            checked={completed}
+            type="checkbox"
+            onChange={() => dispatch(toggleTodoComplete({ id }))}
           />
-        ) : (
-          <img
-            className={css.uncheckedIcon}
-            src="images/unchecked.svg"
-            alt="unchecked"
-          />
-        )}
-        <span className={css.todoText}>{text}</span>
-      </label>
+          {completed ? (
+            <img
+              className={css.checkedIcon}
+              src="images/checked.svg"
+              alt="checked"
+            />
+          ) : (
+            <img
+              className={css.uncheckedIcon}
+              src="images/unchecked.svg"
+              alt="unchecked"
+            />
+          )}
+        </label>
+
+        {isEdit ? defaultView() : editView()}
+      </div>
       {isShow ? (
         <Remove
           className={css.deleteTodo}

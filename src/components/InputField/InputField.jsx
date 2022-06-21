@@ -1,7 +1,6 @@
 import css from "./styles.module.css";
 
 export const InputField = ({ handleSubmit, setText, text }) => {
- 
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
       <input

@@ -5,14 +5,15 @@ const todoSlice = createSlice({
   initialState: {
     todos: [],
   },
-
   reducers: {
     addTodo(state, action) {
-      state.todos.push({
-        id: new Date().toISOString(),
-        text: action.payload.text,
-        completed: false,
-      });
+      action.payload.text.length > 0
+        ? state.todos.push({
+            id: new Date().toISOString(),
+            text: action.payload.text,
+            completed: false,
+          })
+        : alert("Укажите название");
     },
 
     removeTodo(state, action) {
@@ -29,6 +30,14 @@ const todoSlice = createSlice({
       );
       toggledTodo.completed = !toggledTodo.completed;
     },
+
+    toggleAllTodoComplete(state, action) {
+      state.todos = state.todos.filter((todo) =>
+        todo.completed === action.payload
+          ? { ...todo, completed: (todo.completed = true) }
+          : { ...todo, completed: (todo.completed = false) }
+      );
+    },
   },
 });
 
@@ -36,6 +45,7 @@ export const {
   addTodo,
   removeTodo,
   toggleTodoComplete,
+  toggleAllTodoComplete,
   removeAllTodos,
 } = todoSlice.actions;
 export default todoSlice.reducer;

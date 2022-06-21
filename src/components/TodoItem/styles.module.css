@@ -24,6 +24,11 @@
     align-items: center;
 }
 
+.boxIcon {
+    display: flex;
+    align-self: center;
+}
+
 .checkbox {
     display: none;
 }
