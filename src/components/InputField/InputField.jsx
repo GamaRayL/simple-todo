@@ -1,8 +1,8 @@
 import css from "./styles.module.css";
 
-export const InputField = ({ handleSubmit, setText, text }) => {
+export const InputField = ({ addTask, setText, text }) => {
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form onSubmit={(e) => addTask(e)}>
       <input
         value={text}
         onChange={(e) => setText(e.target.value)}

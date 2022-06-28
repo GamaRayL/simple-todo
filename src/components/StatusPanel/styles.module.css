@@ -26,6 +26,12 @@
 
 .filterItem:hover, .clearCompletedTodo:hover {
     border-color: rgba(175, 47, 47, 0.1);
+    transition: ease-in-out 0.3s;
+}
+
+.clearCompletedTodo:active, .filterItem:active {
+    border-color: rgba(175, 47, 47, 0.356);
+    transition: ease-in-out 0.1s;
 }
 
 .radio:checked + label {

@@ -24,6 +24,14 @@ const todoSlice = createSlice({
       state.todos = [];
     },
 
+    saveEditTodo(state, action) {
+      state.todos = state.todos.map((todo) =>
+        todo.id === action.payload.id
+          ? { ...todo, text: action.payload.todoValue }
+          : todo
+      );
+    },
+
     toggleTodoComplete(state, action) {
       const toggledTodo = state.todos.find(
         (todo) => todo.id === action.payload.id
@@ -31,11 +39,11 @@ const todoSlice = createSlice({
       toggledTodo.completed = !toggledTodo.completed;
     },
 
-    toggleAllTodoComplete(state, action) {
-      state.todos = state.todos.filter((todo) =>
-        todo.completed === action.payload
-          ? { ...todo, completed: (todo.completed = true) }
-          : { ...todo, completed: (todo.completed = false) }
+    toggleAllTodoComplete(state) {
+      state.todos = state.todos.map((todo) =>
+        todo.completed
+          ? { ...todo, completed: (todo.completed = false) }
+          : { ...todo, completed: (todo.completed = true) }
       );
     },
   },
@@ -47,5 +55,6 @@ export const {
   toggleTodoComplete,
   toggleAllTodoComplete,
   removeAllTodos,
+  saveEditTodo,
 } = todoSlice.actions;
 export default todoSlice.reducer;

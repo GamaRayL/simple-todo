@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "store/todoSlice";
-import { KeyboardArrowDown } from "@mui/icons-material";
+import LibraryAddCheckOutlinedIcon from "@mui/icons-material/LibraryAddCheckOutlined";
 import css from "./styles.module.css";
 import { ToDoList } from "components/TodoList";
 import { InputField } from "components/InputField";
@@ -25,12 +25,12 @@ function App() {
         <div className={css.content}>
           <div className={css.contentTopItem}>
             <div className={css.iconArrowDown}>
-              <KeyboardArrowDown
+              <LibraryAddCheckOutlinedIcon
                 color="disabled"
-                onClick={() => dispatch(toggleAllTodoComplete(false))}
+                onClick={() => dispatch(toggleAllTodoComplete())}
               />
             </div>
-            <InputField handleSubmit={addTask} text={text} setText={setText} />
+            <InputField addTask={addTask} text={text} setText={setText} />
           </div>
           <ToDoList />
           <StatusPanel />
