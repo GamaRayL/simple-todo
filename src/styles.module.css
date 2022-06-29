@@ -40,7 +40,6 @@ body {
 .iconArrowDown {
     margin: 4px 20px 0 10px;
     cursor: pointer;
-    transition: 0.4s;
     color: #00000042;
 }
 
