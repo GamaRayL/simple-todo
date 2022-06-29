@@ -12,6 +12,7 @@ export const InputField = ({ addTask, setText, text }) => {
         className={css.textField}
       />
       <AddBoxOutlined
+        titleAccess="Add the task"
         onClick={(e) => addTask(e)}
         className={css.addIcon}
       />

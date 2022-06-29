@@ -25,6 +25,7 @@ function App() {
           <div className={css.contentTopItem}>
             <div className={css.iconArrowDown}>
               <LibraryAddCheckOutlined
+                titleAccess="Selecte or unselecte all tasks"
                 onClick={() => dispatch(toggleAllTodoComplete())}
               />
             </div>
