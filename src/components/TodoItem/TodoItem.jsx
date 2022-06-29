@@ -1,14 +1,12 @@
-import { Remove } from "@mui/icons-material";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { removeTodo, toggleTodoComplete } from "store/todoSlice";
-import css from "./styles.module.css";
-import { createTheme, ThemeProvider } from "@mui/material";
-import { green } from "@mui/material/colors";
-import Checkbox from "@mui/material/Checkbox";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import SaveAsOutlinedIcon from "@mui/icons-material/SaveAsOutlined";
 import { saveEditTodo } from "store/todoSlice";
+import { removeTodo, toggleTodoComplete } from "store/todoSlice";
+import { createTheme, ThemeProvider, Checkbox } from "@mui/material";
+import { EditOutlined, Remove, SaveAsOutlined } from "@mui/icons-material";
+import { green } from "@mui/material/colors";
+import css from "./styles.module.css";
+
 
 export const TodoItem = ({ id, text, completed }) => {
   const [isShowDeleteIcon, setIsShowDeleteIcon] = useState(false);
@@ -64,7 +62,7 @@ export const TodoItem = ({ id, text, completed }) => {
       {isShowDeleteIcon ? (
         <div className={css.boxIcon}>
           {isEditTodo ? (
-            <SaveAsOutlinedIcon
+            <SaveAsOutlined
               className={css.saveIcon}
               color="disabled"
               onClick={() => {
@@ -73,7 +71,7 @@ export const TodoItem = ({ id, text, completed }) => {
               }}
             />
           ) : (
-            <EditOutlinedIcon
+            <EditOutlined
               className={css.editIcon}
               onClick={() => setIsEditTodo(true)}
               color="disabled"

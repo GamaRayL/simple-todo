@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTodo } from "store/todoSlice";
-import LibraryAddCheckOutlinedIcon from "@mui/icons-material/LibraryAddCheckOutlined";
-import css from "./styles.module.css";
+import { addTodo, toggleAllTodoComplete } from "store/todoSlice";
+import { LibraryAddCheckOutlined } from "@mui/icons-material";
 import { ToDoList } from "components/TodoList";
 import { InputField } from "components/InputField";
 import { StatusPanel } from "components/StatusPanel";
-import { toggleAllTodoComplete } from "store/todoSlice";
+import css from "./styles.module.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,7 +24,7 @@ function App() {
         <div className={css.content}>
           <div className={css.contentTopItem}>
             <div className={css.iconArrowDown}>
-              <LibraryAddCheckOutlinedIcon
+              <LibraryAddCheckOutlined
                 onClick={() => dispatch(toggleAllTodoComplete())}
               />
             </div>
