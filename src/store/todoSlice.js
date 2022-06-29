@@ -13,7 +13,7 @@ const todoSlice = createSlice({
             text: action.payload.text,
             completed: false,
           })
-        : alert("Укажите название");
+        : alert("Please enter something");
     },
 
     removeTodo(state, action) {
@@ -40,11 +40,9 @@ const todoSlice = createSlice({
     },
 
     toggleAllTodoComplete(state) {
-      state.todos = state.todos.map((todo) =>
-        todo.completed
-          ? { ...todo, completed: (todo.completed = false) }
-          : { ...todo, completed: (todo.completed = true) }
-      );
+      state.todos = state.todos.every((todo) => todo.completed)
+        ? state.todos.map((todo) => ({ ...todo, completed: false }))
+        : state.todos.map((todo) => ({ ...todo, completed: true }));
     },
   },
 });

@@ -43,4 +43,14 @@
 }
 
 
+@media screen and (max-width: 546px) {
+    .panel {
+        font-size: 12px;
+    }
+}
 
+@media screen and (max-width: 408px) {
+    .panel {
+        font-size: 10px
+    }
+}

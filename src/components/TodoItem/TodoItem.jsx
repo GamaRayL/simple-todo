@@ -31,6 +31,7 @@ export const TodoItem = ({ id, text, completed }) => {
         <label className={css.boxIcon}>
           <ThemeProvider theme={checkedTheme}>
             <Checkbox
+              className={css.checkbox}
               disabled={isEditTodo}
               sx={{ color: "#00000042" }}
               checked={completed}

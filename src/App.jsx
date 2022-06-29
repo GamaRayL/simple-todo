@@ -26,7 +26,6 @@ function App() {
           <div className={css.contentTopItem}>
             <div className={css.iconArrowDown}>
               <LibraryAddCheckOutlinedIcon
-                color="disabled"
                 onClick={() => dispatch(toggleAllTodoComplete())}
               />
             </div>
