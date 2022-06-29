@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { changeFilter } from "store/filterSlice";
 import { selectAllTodos } from "store/selectors";
-import { removeAllTodos } from "store/todoSlice";
+import { removeCompletedTodos } from "store/todoSlice";
 import css from "./styles.module.css";
 
 export const StatusPanel = () => {
@@ -47,7 +47,7 @@ export const StatusPanel = () => {
       </div>
       <div
         className={css.clearCompletedTodo}
-        onClick={() => dispatch(removeAllTodos())}
+        onClick={() => dispatch(removeCompletedTodos())}
       >
         Clear completed
       </div>

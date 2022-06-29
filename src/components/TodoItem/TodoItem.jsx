@@ -28,7 +28,6 @@ export const TodoItem = ({ id, text, completed }) => {
         <label className={css.boxIcon}>
           <ThemeProvider theme={checkedTheme}>
             <Checkbox
-              titleAccess="Complete the task"
               className={css.checkbox}
               disabled={isEditTodo}
               sx={{ color: "#00000042" }}
@@ -69,21 +68,18 @@ export const TodoItem = ({ id, text, completed }) => {
                 setIsEditTodo(false);
                 dispatch(saveEditTodo({ todoValue, id }));
               }}
-              titleAccess="Save the task"
             />
           ) : (
             <EditOutlined
               className={css.editIcon}
               onClick={() => setIsEditTodo(true)}
               color="disabled"
-              titleAccess="Edit the task"
             />
           )}
           <Remove
             className={css.deleteTodo}
             color="disabled"
             onClick={() => dispatch(removeTodo({ id }))}
-            titleAccess="Remove the task"
           />
         </div>
       ) : null}
