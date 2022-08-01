@@ -5,7 +5,8 @@
 ## Стек технологий
 
 React, Redux-Toolkit, Material UI
-Использованы хуки: useState, useEffect, useRef, useSelector, useDispatch
+### Использованы хуки:
+useState, useEffect, useRef, useSelector, useDispatch
 
 ## Описание
 
