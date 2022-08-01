@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo, toggleAllTodoComplete } from "store/todoSlice";
 import { LibraryAddCheckOutlined } from "@mui/icons-material";
@@ -9,7 +9,12 @@ import css from "./styles.module.css";
 
 function App() {
   const dispatch = useDispatch();
+  const inputRef = useRef(null);
   const [text, setText] = useState("");
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   const addTask = (e) => {
     e.preventDefault();
@@ -28,7 +33,12 @@ function App() {
                 onClick={() => dispatch(toggleAllTodoComplete())}
               />
             </div>
-            <InputField addTask={addTask} text={text} setText={setText} />
+            <InputField
+              addTask={addTask}
+              text={text}
+              setText={setText}
+              inputRef={inputRef}
+            />
           </div>
           <ToDoList />
           <StatusPanel />
