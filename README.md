@@ -4,7 +4,7 @@
 
 ## Стек технологий
 
-Typescript, React, Redux-Toolkit, Material UI
+React, Redux-Toolkit, Material UI
 Использованы хуки: useState, useEffect, useRef, useSelector, useDispatch
 
 ## Описание
