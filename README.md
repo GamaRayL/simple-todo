@@ -1,6 +1,6 @@
 # To-Do List App
 
-## [Онлайн пример на Codesandbox](https://codesandbox.io/s/todo-list-react-redux-toolkit-j9sm7f?file=/src/index.js)
+## [Онлайн пример на Codesandbox](https://codesandbox.io/s/todo-list-react-redux-toolkit-j9sm7f?file=/src/App.jsx)
 
 ## Стек технологий
 
