@@ -7,7 +7,7 @@ import css from "./styles.module.css";
 export const StatusPanel = () => {
   const dispatch = useDispatch();
   const todos = useSelector(selectAllTodos);
-  const itemsLeft = todos.filter((todo) => todo.completed !== true).length;
+  const itemsLeft = todos.filter((todo) => todo.isCompleted !== true).length;
 
   return (
     <div className={css.panel}>

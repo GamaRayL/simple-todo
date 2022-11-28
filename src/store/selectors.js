@@ -10,9 +10,9 @@ export const selectTodosByFilter = createSelector(
       case "all":
         return allTodos;
       case "completed":
-        return allTodos.filter((todo) => todo.completed);
+        return allTodos.filter((todo) => todo.isCompleted);
       default:
-        return allTodos.filter((todo) => !todo.completed);
+        return allTodos.filter((todo) => !todo.isCompleted);
     }
   }
 );
