@@ -7,10 +7,10 @@ import { EditOutlined, Remove, SaveAsOutlined } from "@mui/icons-material";
 import { green } from "@mui/material/colors";
 import css from "./styles.module.css";
 
-export const TodoItem = ({ id, text, completed }) => {
-  const [isShowDeleteIcon, setIsShowDeleteIcon] = useState(false);
+export const TodoItem = ({ id, value, isCompleted }) => {
+  const [isShowEditIcons, setIsShowEditIcons] = useState(false);
   const [isEditTodo, setIsEditTodo] = useState(false);
-  const [todoValue, setTodoValue] = useState(text);
+  const [todoValue, setTodoValue] = useState(value);
   const dispatch = useDispatch();
 
   const checkedTheme = createTheme({
@@ -21,8 +21,8 @@ export const TodoItem = ({ id, text, completed }) => {
     <li
       key={id}
       className={css.item}
-      onMouseEnter={() => setIsShowDeleteIcon(true)}
-      onMouseLeave={() => setIsShowDeleteIcon(false)}
+      onMouseEnter={() => setIsShowEditIcons(true)}
+      onMouseLeave={() => setIsShowEditIcons(false)}
     >
       <div className={css.boxTextIcon}>
         <label className={css.boxIcon}>
@@ -31,7 +31,7 @@ export const TodoItem = ({ id, text, completed }) => {
               className={css.checkbox}
               disabled={isEditTodo}
               sx={{ color: "#00000042" }}
-              checked={completed}
+              checked={isCompleted}
               onChange={() => dispatch(toggleTodoComplete({ id }))}
             />
           </ThemeProvider>
@@ -51,14 +51,14 @@ export const TodoItem = ({ id, text, completed }) => {
         ) : (
           <span
             className={`${css.todoText} ${
-              completed ? css.linethroughTodoText : null
+              isCompleted ? css.linethroughTodoText : null
             }`}
           >
-            {text}
+            {value}
           </span>
         )}
       </div>
-      {isShowDeleteIcon ? (
+      {isShowEditIcons ? (
         <div className={css.boxIcon}>
           {isEditTodo ? (
             <SaveAsOutlined

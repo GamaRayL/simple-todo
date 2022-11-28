@@ -7,11 +7,11 @@ const todoSlice = createSlice({
   },
   reducers: {
     addTodo(state, action) {
-      action.payload.text.length > 0
+      action.payload.value.length > 0
         ? state.todos.push({
             id: new Date().toISOString(),
-            text: action.payload.text,
-            completed: false,
+            value: action.payload.value,
+            isCompleted: false,
           })
         : alert("Please enter something");
     },
@@ -21,13 +21,13 @@ const todoSlice = createSlice({
     },
 
     removeCompletedTodos(state) {
-      state.todos = state.todos.filter((todo) => todo.completed !== true);
+      state.todos = state.todos.filter((todo) => todo.isCompleted !== true);
     },
 
     saveEditTodo(state, action) {
       state.todos = state.todos.map((todo) =>
         todo.id === action.payload.id
-          ? { ...todo, text: action.payload.todoValue }
+          ? { ...todo, value: action.payload.todoValue }
           : todo
       );
     },
@@ -36,13 +36,13 @@ const todoSlice = createSlice({
       const toggledTodo = state.todos.find(
         (todo) => todo.id === action.payload.id
       );
-      toggledTodo.completed = !toggledTodo.completed;
+      toggledTodo.isCompleted = !toggledTodo.isCompleted;
     },
 
     toggleAllTodoComplete(state) {
-      state.todos = state.todos.every((todo) => todo.completed)
-        ? state.todos.map((todo) => ({ ...todo, completed: false }))
-        : state.todos.map((todo) => ({ ...todo, completed: true }));
+      state.todos = state.todos.every((todo) => todo.isCompleted)
+        ? state.todos.map((todo) => ({ ...todo, isCompleted: false }))
+        : state.todos.map((todo) => ({ ...todo, isCompleted: true }));
     },
   },
 });
