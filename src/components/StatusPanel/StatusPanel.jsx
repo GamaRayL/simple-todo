@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { changeFilter } from "store/filterSlice";
 import { selectAllTodos } from "store/selectors";
 import { removeCompletedTodos } from "store/todoSlice";
-import { FilterElement } from "./FilterElement";
+import { Element } from "./Element";
 import css from "./styles.module.css";
 
 export const StatusPanel = () => {
@@ -14,20 +14,27 @@ export const StatusPanel = () => {
     dispatch(changeFilter(e.target.id));
   };
 
+  const onSubmitHandler = () => {
+    dispatch(removeCompletedTodos());
+  };
+
   return (
     <div className={css.panel}>
       <div className={css.todoLeft}>{`${itemsLeft} ${"items left"}`}</div>
-      <div className={css.filters}>
-        <FilterElement onChange={onChangeHandler} checked id="all" />
-        <FilterElement onChange={onChangeHandler} id="active" />
-        <FilterElement onChange={onChangeHandler} id="completed" />
+      <div>
+        <Element onChange={onChangeHandler} checked id="all">
+          All
+        </Element>
+        <Element onChange={onChangeHandler} id="active">
+          Active
+        </Element>
+        <Element onChange={onChangeHandler} id="completed">
+          Completed
+        </Element>
       </div>
-      <div
-        className={css.clearCompletedTodo}
-        onClick={() => dispatch(removeCompletedTodos())}
-      >
+      <Element onClick={onSubmitHandler} id="clear" type="button">
         Clear completed
-      </div>
+      </Element>
     </div>
   );
 };
